@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" />
+
+
+	<title>Remote Jobs - Result</title>
+</head>
+
+<body>
+	<div class="container_search">
+		<header>
+
+			<div class="contents">
+				<div class="back">
+
+				</div>
+				<h1>Remote Jobs</h1>
+
+				<h2>{{jobs_count}} {{word}} jobs found.</h2>
+
+				<div>
+					<a href="/"><button><i class="fas fa-arrow-left"></i>Go back</button></a>
+              <a href="/export?word={{word}}">
+              
+              <button>
+                <i class="far fa-save"></i>Export CSV</button></a>
+          </div>
+      </div>
+   
+      <div class="blur">
+      </div>
+  </header>
+  
+ <main>
+  {% for job in jobs %}
+    <a href="{{job.link}}" target="_blank">
+      <div class="item">
+        <div>
+            <h3>{{job.title}}</h3>
+            <h4>{{job.company}}</h4>
+        </div>
+        <div>
+            <button>Apply</button>
+        </div>
+        
+        <span class="{{scrapper_type[job.type]}}"}>{{scrapper_type[job.type]}}</span>
+      </div>
+    </a>
+    
+  {% endfor %}
+  </main>
+   </div>
+  
+
+  <script src="https://kit.fontawesome.com/a10bf95f2d.js" crossorigin="anonymous"></script>
+</body>
+</html>
